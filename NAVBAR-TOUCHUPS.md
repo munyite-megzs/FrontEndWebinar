@@ -30,7 +30,7 @@ margin: 0;
 padding: 0;
 }
 
-5. Add space between the h1 element and start of the ul elements. I had already figured out tat 32px is the right spacing. Ideally one would play around with the spacing to get the ideal one if you did not have a designer do that for you. In large companies, he designer will already have come up with the right dimensions for you.
+5. Add space between the h1 element and start of the ul elements. I had already figured out tat 32px is the right spacing. Ideally one would play around with the spacing to get the ideal one if you did not have a designer do that for you. In large companies, the designer will already have come up with the right dimensions for you.
 
 h1 {
 display: inline-block;
@@ -49,3 +49,7 @@ margin: 0 32px;
 }
 
 7. Using a border bottom on the element would be ideal for purpose of styling. It will create some breathing room between the two elements. It will also control the thickness of the line which can't be done by using the text-decoration property. 
+
+
+
+
