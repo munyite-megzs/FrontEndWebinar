@@ -185,4 +185,4 @@ This gives your navbar a more polished and modern look.
 
 ## 🚀 Next Steps
 
-In the next section, we’ll explore **Flexbox**, a powerful tool for aligning and distributing elements — making layouts like this header simpler, cleaner, and more responsive.
+In our frontend cohort this November, we’ll explore **Flexbox**, a powerful tool for aligning and distributing elements — making layouts like this header simpler, cleaner, and more responsive.

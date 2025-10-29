@@ -38,14 +38,21 @@ a.active-navlink {
 }
 
 .card img {
-  height: 500px;
-  object-fit: cover;
+  height: 800px;
   width: 100%;
 }
 
+.card figcaption {
+  display: inline-block;
+}
 .card {
   width: 49.75%;
   display: inline-block;
+  object-fit: cover;
   box-sizing: border-box;
+  padding: 25px;
+}
+
+.galary {
   padding: 15px;
 }
