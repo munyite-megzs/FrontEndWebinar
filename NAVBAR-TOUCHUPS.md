@@ -1,7 +1,39 @@
-In this section, we shall finish up styling our header items. This is by changing the h1 font-weight and text size. Note that any h1 element has a default weight of 700
+# Finishing Up the Header Styling
 
-2. Move the h1 element a bit inside from the left. There is also a bit more spacing at the top and bottom of the h1 element. Note that h1 elements do have a default margin assigned to it, hence the additional space. We need to figure out on whether to apply the margin to the header or to the h1 element alone. I will go with the header
+In this section, we’ll complete the styling of our header and navigation bar by refining spacing, font styles, and active link indicators.
 
+By the end of this section, your header will look balanced, neatly aligned, and visually consistent.
+
+---
+
+## Step 1: Adjust the Heading Font Weight and Size
+
+Let’s begin by improving the appearance of the main heading (`<h1>`).  
+By default, any `<h1>` element has a **font-weight of 700** (bold).
+
+You can adjust its **font-weight** and **font-size** to better match your website’s design.
+
+```css
+h1 {
+  font-weight: 700; /* Default is 700, but you can customize */
+  font-size: 32px; /* Example value */
+}
+```
+
+> You can experiment with different sizes to find what fits your layout best.
+
+---
+
+## Step 2: Adjust Header Spacing and Margins
+
+When you preview your page, you’ll notice extra space above and below your `<h1>` element.  
+This is because `<h1>` elements have **default browser margins** applied.
+
+We’ll handle spacing by applying the margin to the **header** instead of the `<h1>`, giving us better control of overall layout.
+
+Here’s the updated HTML:
+
+```html
 <header class="navbar">
   <h1>OptiFoodPhotography</h1>
   <nav class="nav-links">
@@ -10,46 +42,147 @@ In this section, we shall finish up styling our header items. This is by changin
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    
   </nav>
 </header>
+```
 
-3. Give the haeder element a class called navbar. In css, give that class a margin of 32px. Also remove the default h1 margin. set it to 0.
-   .navbar{
-   margin: 32px;
-   }
+Now, let’s add some CSS:
 
-h1 {
-display: inline-block;
-margin: 0;
+```css
+.navbar {
+  margin: 32px;
 }
 
-4. Note that the ul element too has a default browser padding setting. When one inspects it, it is colored green. A lot of things have margin and padding by default. This is something we shall deal with a lot in the course. We shall learn on how to reset that all at once. For now we will just work around it by setting padding to 0; The reason why ul elements have padding is because typically they are ususlly indented. Like in a word document for example.
+h1 {
+  display: inline-block;
+  margin: 0; /* Remove default browser margin */
+}
+```
 
+This centers your spacing control within the `.navbar` class while keeping the heading aligned.
+
+---
+
+## Step 3: Remove Default `ul` Padding
+
+When inspecting your page in **DevTools**, you may notice green-highlighted padding around the `<ul>` element.  
+That’s because browsers apply **default padding** to lists (to indent them slightly).
+
+We’ll reset that padding manually for now:
+
+```css
 .nav-links ul {
-padding: 0;
+  padding: 0;
 }
+```
 
-5. Add space between the h1 element and start of the ul elements. I had already figured out tat 32px is the right spacing. Ideally one would play around with the spacing to get the ideal one if you did not have a designer do that for you. In large companies, the designer will already have come up with the right dimensions for you.
+> Later in the course, we’ll learn how to **reset all browser default styles** in one go using a CSS reset or `normalize.css`.
 
+---
+
+## Step 4: Add Space Between the Title and Navigation Links
+
+To visually separate the `<h1>` from the navigation links, we’ll add some margin to the right of the heading.
+
+```css
 h1 {
-display: inline-block;
-margin: 0 32px;
+  display: inline-block;
+  margin: 0 32px;
 }
+```
 
-6. Add an underline at the bottom of the link to indicate that this is the page we currently are in. We need to target just that one link. Apply a class to that link and give it a text-decoration of underline. The class name is active-navlink . Note that using the text decoration will work but it is not the most ideal in this case. Note that also doing active-navlink {
+This creates about **32px of spacing** between the logo/title and the start of the navigation links.
+
+> In professional settings, spacing is usually defined by a **UI designer**, but when designing yourself, you can experiment to find a balanced look.
+
+---
+
+## Step 5: Indicate the Active Page Link
+
+Next, we’ll show users which page they’re currently on.  
+We can do this by **underlining** the active link.
+
+HTML:
+
+```html
+<li><a class="active-navlink" href="#home">Home</a></li>
+```
+
+CSS:
+
+```css
+a.active-navlink {
   text-decoration: underline;
-} will not work because it is being overriden by this property , .nav-links a {
+}
+```
+
+---
+
+### Why `.active-navlink` Alone Doesn’t Work
+
+You might have tried this and noticed it didn’t work:
+
+```css
+.active-navlink {
+  text-decoration: underline;
+}
+```
+
+That’s because it’s being **overridden** by this earlier rule:
+
+```css
+.nav-links a {
   color: black;
   text-decoration: none;
   font-size: 20px;
   margin: 0 15px;
-}. The cause of this is because of something called specificity in css. It is something that we shall also talk and see how to ensure you have the right specificity set in your css. for now, to avoid it being overidden, we shall go with a.active-navlink {
-  text-decoration: underline;
 }
+```
 
-7. Using a border bottom on the element would be ideal for purpose of styling. It will create some breathing room between the two elements. It will also control the thickness of the line which can't be done by using the text-decoration property. 
+The reason? **CSS specificity.**
 
+`a.active-navlink` is more specific than `.active-navlink`, so it overrides the more general rule successfully.
 
+We’ll explore CSS specificity in depth later, but for now, just remember:
 
+> The more specific selector (like `a.active-navlink`) takes priority.
 
+---
+
+## Step 6: Use Border Instead of Text Decoration
+
+While `text-decoration: underline;` works, using a **border-bottom** gives you more styling flexibility.
+
+You can:
+
+- Adjust **thickness**
+- Control **color**
+- Create more **space** between text and line
+
+```css
+a.active-navlink {
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+}
+```
+
+This gives your navbar a more polished and modern look.
+
+---
+
+## ✅ Summary
+
+| Step | Goal                                   | CSS Concept            |
+| ---- | -------------------------------------- | ---------------------- |
+| 1    | Adjust `<h1>` weight and size          | Typography             |
+| 2    | Control header spacing                 | Margins and layout     |
+| 3    | Remove default `<ul>` padding          | Browser default resets |
+| 4    | Add spacing between `<h1>` and `<nav>` | Margins                |
+| 5    | Highlight current page                 | Active link styling    |
+| 6    | Use `border-bottom` for design control | Visual polish          |
+
+---
+
+## 🚀 Next Steps
+
+In the next section, we’ll explore **Flexbox**, a powerful tool for aligning and distributing elements — making layouts like this header simpler, cleaner, and more responsive.
